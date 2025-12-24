@@ -91,5 +91,4 @@ RUN echo 'export TCLLIBPATH="/ns-allinone-2.35/tcl8.5.10/library"' >> /etc/bash.
 #work directory:
 WORKDIR /ns-allinone-2.35/
 
-# Default command: open an interactive shell
 CMD ["/bin/bash"]
