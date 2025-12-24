@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "inet.h": "c",
+        "dymo_socket.h": "c",
+        "timer_queue.h": "c",
+        "time.h": "c",
+        "dymo_nb.h": "c",
+        "dymo_hello.h": "c",
+        "dymo_um.h": "c",
+        "defs.h": "c",
+        "pending_rreq.h": "c",
+        "cmath": "cpp"
+    }
+}

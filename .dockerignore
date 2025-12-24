@@ -1,0 +1,12 @@
+.git
+*.log
+*.o
+*.a
+*.so
+*.pyc
+*.backup
+*.bu
+*.tmp
+test/
+docs/
+examples/
