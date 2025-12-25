@@ -1,5 +1,5 @@
 # Use multi-stage build to keep final image small
-FROM ubuntu:22.04 AS builder
+FROM ubuntu:22.04 AS base
 
 # environement variables
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -63,7 +63,10 @@ RUN cd /ns-allinone-2.35/tclcl-1.20 && \
     make install 
 
   
+# compiling NS2 and NAM cuncurrently:
+
 #building the ns2 application
+FROM base AS ns2
 RUN cd /ns-allinone-2.35/ns-2.35 && \ 
     ./configure \
     --with-tcl=/ns-allinone-2.35/tcl8.5.10/unix \
@@ -75,9 +78,19 @@ RUN cd /ns-allinone-2.35/ns-2.35 && \
     make
 
 #building the nam simulator 
+FROM base AS nam
 RUN cd /ns-allinone-2.35/nam-1.15/ &&\
-    make clean &&\
+    make clean &&\l
     make
+
+
+FROM base AS builder
+COPY --from=ns2 /ns-allinone-2.35/ns-2.35/ns /ns-allinone-2.35/ns-2.35/ns
+COPY --from=nam /ns-allinone-2.35/nam-1.15/nam /ns-allinone-2.35/nam-1.15/nam
+
+
+#work directory:
+WORKDIR /ns-allinone-2.35/
 
 #setting env variables and accessibility for the container:
 RUN echo 'export TCLLIBPATH="/ns-allinone-2.35/tcl8.5.10/library"' >> /etc/bash.bashrc && \
@@ -88,8 +101,6 @@ RUN echo 'export TCLLIBPATH="/ns-allinone-2.35/tcl8.5.10/library"' >> /etc/bash.
     ln -sf /ns-allinone-2.35/ns-2.35/ns /usr/bin &&\
     ln -sf /ns-allinone-2.35/nam-1.15/nam /usr/local/bin/nam
 
-#work directory:
-WORKDIR /ns-allinone-2.35/
 
 # Default command: open an interactive shell
 CMD ["/bin/bash"]
