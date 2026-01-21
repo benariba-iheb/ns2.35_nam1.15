@@ -1,7 +1,8 @@
 make sure to enable access to xhost for docker
-xhost +local: 			#this will allow access by any
 
-xhost +local:docker
+xhost +local      			#this will allow access by any
+
+xhost +local:docker     
 
 -------------------------------------------------------------
 using docker-compose:
