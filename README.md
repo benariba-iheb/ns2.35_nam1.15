@@ -1,6 +1,4 @@
-https://img.shields.io/docker/image-size/prometh1us/ns2.35_nam1.15  
-https://img.shields.io/github/languages/code-size/benariba-iheb/ns2.35_nam1.15
-
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/benariba-iheb/ns2.35_nam1.15) | ![Docker Image Size](https://img.shields.io/docker/image-size/prometh1us/ns2.35_nam1.15)
 
 make sure to enable access to xhost for docker
 
