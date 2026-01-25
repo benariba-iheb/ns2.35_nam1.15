@@ -3,7 +3,9 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/benariba-iheb/ns2.35_nam1.15)
 
 
-![Static Badge](https://img.shields.io/badge/important-red) make sure to enable access to xhost for docker ![Static Badge](https://img.shields.io/badge/important-red)
+![Static Badge](https://img.shields.io/badge/important-red) 
+make sure to enable access to xhost for docker
+
 #> xhost +local      			#this will allow access by any
 
 #> xhost +local:docker     
@@ -37,6 +39,9 @@ docker run -it --rm \
 - test if you have access to the graphical interface by running an x-app:
 #> xclock
 
-![Static Badge](https://img.shields.io/badge/important-red) if the clock does not lunch from the container. it means the container still does not have access to the x11 library ![Static Badge](https://img.shields.io/badge/important-red)
+![Static Badge](https://img.shields.io/badge/important-red) 
+if the clock does not lunch from the container. it means the container still does not have access to the x11 library 
 
-![Static Badge](https://img.shields.io/badge/important-red) if the clock does not lunch from the container. it means the container still does not have access to the X11 Unix socket for GUI display ![Static Badge](https://img.shields.io/badge/important-red)
+
+![Static Badge](https://img.shields.io/badge/important-red) 
+if the clock does not lunch from the container. it means the container still does not have access to the X11 Unix socket for GUI display 
