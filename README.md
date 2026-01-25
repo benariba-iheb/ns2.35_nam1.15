@@ -15,7 +15,7 @@ make sure to enable access to xhost for docker
 
 - install the docker-compose file to your working directory
 
-- start the simulator as root (or make sure your user has access to /tmp/.X11-unix/) and make sure to inc>
+- start the simulator as root (or make sure your user has access to /tmp/.X11-unix/)
 
 - run the compose in the same directory as the compose-file:
   
