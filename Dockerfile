@@ -72,7 +72,7 @@ RUN cd /ns-allinone-2.35/ns-2.35 && \
     --with-tcl=/ns-allinone-2.35/tcl8.5.10/unix \
     --with-tcl-ver=8.5 \
     --with-tk=/ns-allinone-2.35/tk8.5.10/unix \
-    --with-tk-ver=8.5 \
+--with-tk-ver=8.5 \
     --with-tclcl=/ns-allinone-2.35/tclcl &&\
     make clean &&\
     make
