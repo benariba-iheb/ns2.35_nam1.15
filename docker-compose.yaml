@@ -1,13 +1,11 @@
 # docker-compose.yml
-version: '3.8'
-
 services:
   ns2:
     image: prometh1us/ns2.35_nam1.15:latest
     container_name: ns2-simulator
     environment:
-      - DISPLAY=${DISPLAY}
-      - TERM=xterm-256color
+      DISPLAY: ${DISPLAY}
+      TERM: xterm-256color
     volumes:
       # X11 for GUI
       - /tmp/.X11-unix:/tmp/.X11-unix:rw

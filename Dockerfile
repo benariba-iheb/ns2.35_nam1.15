@@ -5,9 +5,9 @@ FROM ubuntu:22.04 AS base
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=Etc/UTC \
     CC=gcc-4.8 \
-    CXX=g++-4.8 \ 
-    PATH=$PATH:/ns-allinone-2.35/tclcl-1.20/:/tmp/ns-allinone-2.35/ns-2.35/bin/:/tmp/ns2/ns-allinone-2.35/ns-2.35/tcl/http:/ns-allinone-2.35/lib/tcl8.5:/ns-allinone-2.35/tcl8.5.10/library/http:/ns-allinone-2.35/include:/ns-allinone-2.35/bin:/ns-allinone-2.35/tcl8.5.10/unix:/ns-allinone-2.35/tk8.5.10/unix \ 
-    LD_LIBRARY_PATH=/ns-allinone-2.35/otcl-1.14:/tmp/ns-allinone-2.35/tcl8.5.10/generic:/tmp/ns-allinone-2.35/tcl8.5.10/tests:/ns-allinone-2.35/tcl8.5.10/library/http1.0:/ns-allinone-2.35/tcl8.5.10/library/http:/ns-allinone-2.35/tcl8.5.10/library:/ns-allinone-2.35/tcl8.5.10/unix:/ns-allinone-2.35/otcl-1.14:/ns-allinone-2.35/lib  
+    CXX=g++-4.8 \
+    PATH=$PATH:/ns-allinone-2.35/tclcl-1.20/:/tmp/ns-allinone-2.35/ns-2.35/bin/:/tmp/ns2/ns-allinone-2.35/ns-2.35/tcl/http:/ns-allinone-2.35/lib/tcl8.5:/ns-allinone-2.35/tcl8.5.10/library/http:/ns-allinone-2.35/include:/ns-allinone-2.35/bin:/ns-allinone-2.35/tcl8.5.10/unix:/ns-allinone-2.35/tk8.5.10/unix \
+    LD_LIBRARY_PATH=/ns-allinone-2.35/otcl-1.14:/tmp/ns-allinone-2.35/tcl8.5.10/generic:/tmp/ns-allinone-2.35/tcl8.5.10/tests:/ns-allinone-2.35/tcl8.5.10/library/http1.0:/ns-allinone-2.35/tcl8.5.10/library/http:/ns-allinone-2.35/tcl8.5.10/library:/ns-allinone-2.35/tcl8.5.10/unix:/ns-allinone-2.35/otcl-1.14:/ns-allinone-2.35/lib
 
 # Install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 ca-certificates && \
@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 ca-certi
     apt-get install -y --no-install-recommends \
         build-essential \
         gcc-4.8 g++-4.8 \
-        make \ 
+        make \
         libx11-dev \
         libxmu-dev \
         libxpm-dev \
@@ -38,7 +38,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 ca-certi
         nam \
         xauth \
         x11-apps && \
-    apt-get clean 
+    apt-get clean
 
 
 # Set gcc-4.8 as the system default
@@ -51,7 +51,7 @@ RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 100 && \
 # copy ns2 source
 COPY ns-allinone-2.35/ /ns-allinone-2.35/
 RUN cd /ns-allinone-2.35/ &&\
-    ./install 
+    ./install
 
 
 #building tclcl
@@ -60,14 +60,14 @@ RUN cd /ns-allinone-2.35/tclcl-1.20 && \
     --with-tcl=/ns-allinone-2.35/tcl8.5.10/ &&\
     make clean &&\
     make && \
-    make install 
+    make install
 
-  
+
 # compiling NS2 and NAM cuncurrently:
 
 #building the ns2 application
 FROM base AS ns2
-RUN cd /ns-allinone-2.35/ns-2.35 && \ 
+RUN cd /ns-allinone-2.35/ns-2.35 && \
     ./configure \
     --with-tcl=/ns-allinone-2.35/tcl8.5.10/unix \
     --with-tcl-ver=8.5 \
@@ -77,10 +77,10 @@ RUN cd /ns-allinone-2.35/ns-2.35 && \
     make clean &&\
     make
 
-#building the nam simulator 
+#building the nam simulator
 FROM base AS nam
 RUN cd /ns-allinone-2.35/nam-1.15/ &&\
-    make clean &&\l
+    make clean &&\
     make
 
 
