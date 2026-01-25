@@ -102,5 +102,4 @@ RUN echo 'export TCLLIBPATH="/ns-allinone-2.35/tcl8.5.10/library"' >> /etc/bash.
     ln -sf /ns-allinone-2.35/nam-1.15/nam /usr/local/bin/nam
 
 
-# Default command: open an interactive shell
 CMD ["/bin/bash"]

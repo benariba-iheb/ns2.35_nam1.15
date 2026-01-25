@@ -20,5 +20,4 @@ services:
     tty: true
     working_dir: /simulations
     command: /bin/bash
-    # Auto-remove when stopped (like --rm)
     restart: "no"
