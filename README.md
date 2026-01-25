@@ -18,9 +18,11 @@ make sure to enable access to xhost for docker
 - start the simulator as root (or make sure your user has access to /tmp/.X11-unix/) and make sure to inc>
 
 - run the compose in the same directory as the compose-file:
+  
 #> docker-compose up -d
 
 -attach to the container:
+
 #> docker attach ns2-simulator
 
 ---------------------------------------------------------------
@@ -37,6 +39,7 @@ docker run -it --rm \
   prometh1us/ns2.35_nam1.15:latest
 
 - test if you have access to the graphical interface by running an x-app:
+  
 #> xclock
 
 ![Static Badge](https://img.shields.io/badge/important-red) 
