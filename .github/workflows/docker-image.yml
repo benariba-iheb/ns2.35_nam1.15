@@ -64,6 +64,14 @@ jobs:
     - name: Create version tag
       run: echo "VERSION=${{ github.run_number }}" >> $GITHUB_ENV
 
+
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: ns2-image-${{ env.VERSION }}
+    - name: Load Docker image
+      run: docker load -i ns2-image-${{ env.VERSION }}.tar
+
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
