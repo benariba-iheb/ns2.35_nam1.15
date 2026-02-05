@@ -72,4 +72,6 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}  
 
     - name: Push the Docker image
-      run: docker push ns2.35_nam1.15:${{ env.VERSION }}
+      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/ns2.35_nam1.15:${{ env.VERSION }}
+
+  
