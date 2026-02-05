@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ns2.35_nam1.15:latest
+    - name: Build the Docker image and tag it by date
+      run: docker build . --file Dockerfile --tag ns2.35_nam1.15:$(date +%s)
 
     - name: Run the Docker container
-      run: docker run -d --name ns2_container ns2.35_nam1.15:latest
+      run: docker run -d --name ns2_container ns2.35_nam1.15:$(date +%s)
 
     - name: Verify the container is running
       run: docker ps -a | grep ns2_container
@@ -28,12 +28,12 @@ jobs:
     - name: scan using Trivy
       run: |
         curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
-        trivy image ns2.35_nam1.15:latest
+        trivy image ns2.35_nam1.15:$(date +%s)
 
     - name: open high severity vulnerabilities as issues
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: ns2.35_nam1.15:latest
+        image-ref: ns2.35_nam1.15:$(date +%s)
         severity: HIGH,CRITICAL
         format: 'table'
         exit-code: '1'
@@ -51,9 +51,9 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}  
 
     - name: Push the Docker image
-      run: docker push ns2.35_nam1.15:latest
+      run: docker push ns2.35_nam1.15:$(date +%s)
 
     - name: Verify the image is pushed
       run: |
-        docker pull ns2.35_nam1.15:latest 
-        docker images | grep ns2.35_nam1.15:latest
+        docker pull ns2.35_nam1.15:$(date +%s) 
+        docker images | grep ns2.35_nam1.15:$(date +%s)
