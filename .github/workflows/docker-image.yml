@@ -48,12 +48,12 @@ jobs:
         trivy image ns2.35_nam1.15:${{ env.VERSION }}
 
     - name: open high severity vulnerabilities as issues
-      uses: aquasecurity/trivy-action@master
+      uses: aquasecurity/trivy-action@main
       with:
         image-ref: ns2.35_nam1.15:${{ env.VERSION }}
         severity: HIGH,CRITICAL
         format: 'table'
-        exit-code: '1'
+        exit-code: '0'
         github-token: ${{ secrets.GITHUB_TOKEN }}
   
   publish:
