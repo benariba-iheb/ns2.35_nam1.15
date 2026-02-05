@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create version tag
-        run: echo "VERSION=$(date +%s)" >> $GITHUB_ENV
+        run: echo "VERSION=${{ github.run_number }}" >> $GITHUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,6 +33,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+    - name: Create version tag
+      run: echo "VERSION=${{ github.run_number }}" >> $GITHUB_ENV
     - name: Download artifact
       uses: actions/download-artifact@v4
       with:
@@ -55,10 +57,14 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
   
   publish:
+
     runs-on: ubuntu-latest
     needs: security-scan
     if: github.ref == 'refs/heads/main'
     steps:
+    - name: Create version tag
+      run: echo "VERSION=${{ github.run_number }}" >> $GITHUB_ENV
+
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
