@@ -48,7 +48,7 @@ jobs:
         trivy image ns2.35_nam1.15:${{ env.VERSION }}
 
     - name: open high severity vulnerabilities as issues
-      uses: aquasecurity/trivy-action@main
+      uses: aquasecurity/trivy-action@master
       with:
         image-ref: ns2.35_nam1.15:${{ env.VERSION }}
         severity: HIGH,CRITICAL
