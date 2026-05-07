@@ -42,8 +42,6 @@ docker run -it --rm \
   
 #> xclock
 
-![Static Badge](https://img.shields.io/badge/important-red) 
-if the clock does not lunch from the container. it means the container still does not have access to the x11 library 
 
 
 ![Static Badge](https://img.shields.io/badge/important-red) 
