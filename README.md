@@ -1,9 +1,9 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/benariba-iheb/ns2.35_nam1.15) | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/prometh1us/ns2.35_nam1.15/latest) | ![Docker Stars](https://img.shields.io/docker/stars/prometh1us/ns2.35_nam1.15) | ![Docker Automated build](https://img.shields.io/docker/automated/prometh1us/ns2.35_nam1.15)
 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/benariba-iheb/ns2.35_nam1.15)
-
+-------------------------------------------------------------
 
 ![Static Badge](https://img.shields.io/badge/important-red) 
+
 make sure to enable access to xhost for docker
 
 #> xhost +local      			#this will allow access by any
